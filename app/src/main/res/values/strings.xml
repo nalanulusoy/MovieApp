@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">movieapp</string>
+
+    <string name="tmdb_image_url">http://image.tmdb.org/t/p/</string>
+    <string name="image_size_185">w185</string>
+    <string name="image_size_500">w500</string>
+    <string name="image_size_780">w780</string>
+    <string name="image_size_original">original</string>
+    <string name="network_connection"> Check your network connection!!</string>
+    <string name="error_service"> Something is wrong!!</string>
+
+
+
+</resources>
