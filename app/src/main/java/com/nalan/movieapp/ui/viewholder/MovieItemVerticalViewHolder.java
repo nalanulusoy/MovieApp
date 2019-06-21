@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nalan.movieapp.R;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,9 @@ public class MovieItemVerticalViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void setImageView(String url, Activity activity){
-        Glide.with(activity).load(url).into(imageView);
+        Glide.with(activity).load(url).asBitmap()
+                .fitCenter()
+                .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
     }
     public  void setTitle(String title){
         tv_title.setText(title);

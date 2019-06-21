@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
     tools:context=".ui.fragment.HomeMovieFragment">
 
     <ProgressBar
@@ -14,5 +15,5 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_movie_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 </FrameLayout>

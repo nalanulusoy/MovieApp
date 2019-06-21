@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.nalan.movieapp.R;
 import com.nalan.movieapp.constants.AppConstants;
+import com.nalan.movieapp.model.Movie;
 import com.nalan.movieapp.model.MovieResult;
 import com.nalan.movieapp.ui.viewholder.MovieGridViewHolder;
 import com.nalan.movieapp.ui.viewholder.MovieHeaderViewHolder;
@@ -24,11 +25,11 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     List<Object> mItems;
     Activity activity;
-    FragmentManager fragmentManager;
 
-    public MovieAdapter(Activity activity, FragmentManager supportFragmentManager) {
-        this.activity=activity;
-        this.fragmentManager=supportFragmentManager;
+
+    public MovieAdapter(Activity activity) {
+        this.activity = activity;
+
 
     }
 
@@ -53,8 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_header_view,
                     parent, false);
             return new MovieHeaderViewHolder(view);
-        }
-        else{
+        } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_custom_view,
                     parent, false);
             return new StandartViewHolder(view);
@@ -64,37 +64,37 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        Object item =mItems.get(position);
+        Object item = mItems.get(position);
 
-        if(holder instanceof MovieHeaderViewHolder){
-            MovieResult movieResult=(MovieResult)item;
-
-        }
-        else if(holder instanceof  MovieHorizontalViewHolder){
-            MovieHorizontalViewHolder viewHolder=(MovieHorizontalViewHolder)holder;
-            MovieResult movieResult=(MovieResult)item;
+        if (holder instanceof MovieHeaderViewHolder) {
+            Movie movieResult = (Movie) item;
+            MovieHeaderViewHolder viewHolder = (MovieHeaderViewHolder) holder;
+            if (movieResult.posterUrl != null) {
+                viewHolder.setImageView(AppConstants.IMAGE_PATH_ORİGİNAL + movieResult.posterUrl, activity);
+            }
+        } else if (holder instanceof MovieHorizontalViewHolder) {
+            MovieHorizontalViewHolder viewHolder = (MovieHorizontalViewHolder) holder;
+            MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieHorizontalListAdapter movieHorizontalListAdapter =new MovieHorizontalListAdapter(movieResult.getResults(),activity);
-            viewHolder.setAdapter(movieHorizontalListAdapter,activity);
+            MovieHorizontalListAdapter movieHorizontalListAdapter = new MovieHorizontalListAdapter(movieResult.getResults(), activity);
+            viewHolder.setAdapter(movieHorizontalListAdapter, activity);
 
-        }
-        else if(holder instanceof MovieGridViewHolder){
+        } else if (holder instanceof MovieGridViewHolder) {
 
-            MovieGridViewHolder viewHolder=(MovieGridViewHolder)holder;
-            MovieResult movieResult=(MovieResult)item;
+            MovieGridViewHolder viewHolder = (MovieGridViewHolder) holder;
+            MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieListVerticalAdapter movieListAdapter =new MovieListVerticalAdapter(movieResult.getResults(),activity);
-            viewHolder.setAdapter( movieListAdapter ,activity);
+            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity);
+            viewHolder.setAdapter(movieListAdapter, activity);
 
 
-        }
-        else if(holder instanceof MovieVerticalViewHolder){
+        } else if (holder instanceof MovieVerticalViewHolder) {
 
-            MovieVerticalViewHolder viewHolder=(MovieVerticalViewHolder)holder;
-            MovieResult movieResult=(MovieResult)item;
+            MovieVerticalViewHolder viewHolder = (MovieVerticalViewHolder) holder;
+            MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieListVerticalAdapter movieListAdapter =new MovieListVerticalAdapter(movieResult.getResults(),activity);
-            viewHolder.setAdapter( movieListAdapter ,activity);
+            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity);
+            viewHolder.setAdapter(movieListAdapter, activity);
 
         }
 
@@ -103,8 +103,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        if (mItems!=null && mItems.size()>0) {
+        if (mItems != null && mItems.size() > 0) {
             return mItems.size();
+
         } else {
             return 0;
         }
@@ -127,23 +128,25 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             MovieResult movieResult = (MovieResult) item;
 
             if (movieResult.getTypeName().equals(AppConstants.VİEW_TYPE_NAME.TOP_lATEST_MOVİE)) {
-
                 viewType = AppConstants.VİEW_TYPE.GRİD_LİST;
                 return viewType;
             } else if (movieResult.getTypeName().equals(AppConstants.VİEW_TYPE_NAME.TOP_RATED_MOVİE)) {
-
-
                 viewType = AppConstants.VİEW_TYPE.VERTİCAL_LİST;
                 return viewType;
 
             } else if (movieResult.getTypeName().equals(AppConstants.VİEW_TYPE_NAME.TOP_POPULAR_MOVİE)) {
-
                 viewType = AppConstants.VİEW_TYPE.HORİZONTAL_LİST;
                 return viewType;
 
             }
 
-
+        }
+        else if(item instanceof Movie){
+            Movie movieResult = (Movie) item;
+             if (movieResult.getTypeName().equals(AppConstants.VİEW_TYPE_NAME.GET_MOVİE)) {
+                viewType = AppConstants.VİEW_TYPE.GET_MOVİE;
+                return viewType;
+            }
         }
 
         return viewType;

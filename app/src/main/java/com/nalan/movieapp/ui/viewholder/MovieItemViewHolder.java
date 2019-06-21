@@ -25,7 +25,8 @@ public class MovieItemViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setImageView(String url, Activity activity){
-        Glide.with(activity).load(url).into(imageView);
+        Glide.with(activity).load(url).asBitmap()
+                .fitCenter().into(imageView);
     }
     public  void setTitle(String title){
         tv_title.setText(title);

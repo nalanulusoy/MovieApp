@@ -36,7 +36,7 @@ public class MovieListVerticalAdapter  extends RecyclerView.Adapter<MovieItemVer
 
         if(movie.posterUrl!=null){
 
-            holder.setImageView(AppConstants.IMAGE_PATH+movie.posterUrl,activity);
+            holder.setImageView(AppConstants.IMAGE_PATH_ORİGİNAL+movie.posterUrl,activity);
         }
         if(movie.originalTitle!=null){
             holder.setTitle(movie.originalTitle);

@@ -12,19 +12,16 @@ public class ActivityUtils {
 
 
     public static void setRecyclerHorizontalLayoutManager(RecyclerView recyclerView,Activity activity){
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearVertical =
                 new LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearVertical);
     }
     public static void setRecyclerVerticalLayoutManager(RecyclerView recyclerView,Activity activity){
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearVertical =
                 new LinearLayoutManager(activity,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearVertical);
     }
     public static void setRecyclerGridLayoutManager(RecyclerView recyclerView,Activity activity){
-        recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(activity,2,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
     }

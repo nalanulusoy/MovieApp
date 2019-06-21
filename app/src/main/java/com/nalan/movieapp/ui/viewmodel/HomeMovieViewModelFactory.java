@@ -2,14 +2,17 @@ package com.nalan.movieapp.ui.viewmodel;
 
 import android.app.Activity;
 
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
 
 public class HomeMovieViewModelFactory implements ViewModelProvider.Factory {
 
 
     Activity activity;
+
 
     public HomeMovieViewModelFactory(Activity activity) {
         this.activity = activity;

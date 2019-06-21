@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/border_height"
-        android:background="@color/colorRed"
+        android:background="@color/colorPurple"
         android:orientation="vertical">
 
         <TextView

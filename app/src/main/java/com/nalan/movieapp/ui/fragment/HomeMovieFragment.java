@@ -1,16 +1,15 @@
 package com.nalan.movieapp.ui.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.AndroidInjection;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.di.Injectable;
 import com.nalan.movieapp.ui.adapter.MovieAdapter;
 import com.nalan.movieapp.ui.viewmodel.HomeMovieViewModel;
 import com.nalan.movieapp.ui.viewmodel.HomeMovieViewModelFactory;
@@ -25,8 +25,10 @@ import com.nalan.movieapp.util.ActivityUtils;
 
 import java.util.List;
 
+import javax.inject.Inject;
 
-public class HomeMovieFragment extends Fragment {
+
+public class HomeMovieFragment extends Fragment implements Injectable {
 
     HomeMovieViewModel homeMovieViewModel;
     View view;
@@ -36,6 +38,8 @@ public class HomeMovieFragment extends Fragment {
     RecyclerView rec_movie_list;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+
+    HomeMovieViewModelFactory factory;
     public HomeMovieFragment() {
         // Required empty public constructor
     }
@@ -70,12 +74,11 @@ public class HomeMovieFragment extends Fragment {
 
     public void setAdapter(){
         ActivityUtils.setRecyclerVerticalLayoutManager(rec_movie_list,getActivity());
-        movieAdapter=new MovieAdapter(getActivity(), getActivity().getSupportFragmentManager());
+        movieAdapter=new MovieAdapter(getActivity());
         rec_movie_list.setAdapter(movieAdapter);
-
     }
     private HomeMovieViewModel createViewModel() {
-        HomeMovieViewModelFactory factory = new HomeMovieViewModelFactory(getActivity());
+        factory=new  HomeMovieViewModelFactory(getActivity());
         return ViewModelProviders.of(this, factory).get(HomeMovieViewModel.class);
     }
 

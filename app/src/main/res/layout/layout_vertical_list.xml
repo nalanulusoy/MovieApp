@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/border_height"
-        android:background="@color/colorGray"
+        android:background="@color/colorPurpleDark"
         android:orientation="vertical">
 
         <TextView
@@ -29,5 +29,5 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

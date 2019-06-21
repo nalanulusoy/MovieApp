@@ -7,7 +7,7 @@ import java.util.List;
 
 import io.reactivex.annotations.NonNull;
 
-public class Movie {
+public class Movie extends AdditionalModel {
     @SerializedName("id")
     @Expose
     @NonNull
