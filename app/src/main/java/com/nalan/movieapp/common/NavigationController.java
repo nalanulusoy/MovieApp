@@ -23,7 +23,6 @@ public class NavigationController {
         HomeMovieFragment fragment = new HomeMovieFragment();
         fragmentManager.beginTransaction()
                 .replace(containerId, fragment, AppConstants.FRAGMENT_TAG.HOME_MOVİE_FRAGMENT)
-                .addToBackStack(AppConstants.FRAGMENT_TAG.HOME_MOVİE_FRAGMENT)
                 .commitAllowingStateLoss();
     }
 
