@@ -9,12 +9,19 @@
  Uses the following technologies
  
  A simple movie app with Clean Architecture .
+ 
  Android Architecture Components (MVVM, LiveData)
+ 
  RxJava 2
+ 
  Glide 4
+ 
  Retrofit 2
+ 
  Dagger 2
+ 
  ButterKnife
+ 
 
   
   
