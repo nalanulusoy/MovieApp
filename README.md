@@ -3,6 +3,8 @@
 
 # OverView
 
+
+
   ![Webp net-gifmaker (1)](https://user-images.githubusercontent.com/6108274/60019813-6a59aa00-9697-11e9-8ebb-65c7fdbaf290.gif)
   
 
@@ -27,6 +29,8 @@
 
 RxJava zip
 Returns an Observable that emits the results of a specified combiner function applied to combinations of three items emitted, in sequence, by tree other ObservableSources.
+
+Last Release Movies,Popular Movies and Top Rates Movies fetched same  time call api and same time return response.
 
 ![image](https://user-images.githubusercontent.com/6108274/60024735-020fc600-96a1-11e9-9fdf-16e36910d29f.png)
 
