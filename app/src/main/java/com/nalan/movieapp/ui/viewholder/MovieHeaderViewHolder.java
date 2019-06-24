@@ -22,8 +22,7 @@ public class MovieHeaderViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this, itemView);
     }
     public void setImageView(String url, Activity activity){
-        Glide.with(activity).load(url).asBitmap()
-                .fitCenter()
+        Glide.with(activity).load(url).fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
 
     }

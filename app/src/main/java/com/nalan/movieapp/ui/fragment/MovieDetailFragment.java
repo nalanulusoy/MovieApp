@@ -124,8 +124,7 @@ public class MovieDetailFragment extends Fragment implements Injectable ,View.On
 
 
     public void setImageView(String url, Activity activity){
-        Glide.with(activity).load(url).asBitmap()
-                .fitCenter().into(imageView);
+        Glide.with(activity).load(url).fitCenter().into(imageView);
     }
 
     public void setInfoMovieDetail(List<Movie> movieDetail) {

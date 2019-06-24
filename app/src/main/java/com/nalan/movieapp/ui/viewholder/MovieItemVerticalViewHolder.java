@@ -26,7 +26,7 @@ public class MovieItemVerticalViewHolder extends RecyclerView.ViewHolder{
     }
 
     public void setImageView(String url, Activity activity){
-        Glide.with(activity).load(url).asBitmap()
+        Glide.with(activity).load(url)
                 .fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
     }
