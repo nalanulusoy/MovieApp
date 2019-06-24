@@ -31,4 +31,5 @@ public class MovieVerticalViewHolder extends RecyclerView.ViewHolder {
         textView.setText(text);
 
     }
+
 }

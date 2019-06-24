@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 import com.nalan.movieapp.constants.AppConstants;
 import com.nalan.movieapp.model.Movie;
 import com.nalan.movieapp.model.MovieResult;
@@ -20,10 +21,12 @@ public class MovieHorizontalListAdapter extends RecyclerView.Adapter<MovieItemVi
 
     List<Movie> mItems;
     Activity activity;
+    NavigationController navigationController;
 
-    public MovieHorizontalListAdapter(List<Movie> mItems, Activity activity) {
+    public MovieHorizontalListAdapter(List<Movie> mItems, Activity activity, NavigationController navigationController) {
         this.mItems = mItems;
-        this.activity=activity;
+        this.activity = activity;
+        this.navigationController = navigationController;
     }
 
     @NonNull
@@ -36,25 +39,29 @@ public class MovieHorizontalListAdapter extends RecyclerView.Adapter<MovieItemVi
 
     @Override
     public void onBindViewHolder(@NonNull MovieItemViewHolder holder, int position) {
-        Movie movie=mItems.get(position);
+        Movie movie = mItems.get(position);
 
 
-        if(movie.voteAverage!=null){
+        if (movie.voteAverage != null) {
             holder.setPoint(Double.toString(movie.voteAverage));
         }
-        if(movie.posterUrl!=null){
+        if (movie.posterUrl != null) {
 
-            holder.setImageView(AppConstants.IMAGE_PATH+movie.posterUrl,activity);
+            holder.setImageView(AppConstants.IMAGE_PATH + movie.posterUrl, activity);
         }
-        if(movie.originalTitle!=null){
+        if (movie.originalTitle != null) {
             holder.setTitle(movie.originalTitle);
         }
+        if (Integer.valueOf(movie.id).toString() != null) {
+            holder.setClickListener(Integer.valueOf(movie.id).toString(), navigationController);
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        if (mItems!=null && mItems.size() > 0) {
+        if (mItems != null && mItems.size() > 0) {
             return mItems.size();
         } else {
             return 0;

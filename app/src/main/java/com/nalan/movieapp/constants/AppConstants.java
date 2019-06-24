@@ -39,6 +39,7 @@ public class AppConstants {
     public static class FRAGMENT_TAG{
 
         public static  String HOME_MOVİE_FRAGMENT="HOME_MOVİE_FRAGMENT";
+        public static  String HOME_DETAİL_FRAGMENT="HOME_MOVİE_DETAİL_FRAGMENT";
 
     }
 

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,5 +32,18 @@ public class MovieItemVerticalViewHolder extends RecyclerView.ViewHolder{
     }
     public  void setTitle(String title){
         tv_title.setText(title);
+    }
+
+    public void setClickListener (String newsId, NavigationController navigationController){
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                navigationController.navigateToMovieDetailFragment(newsId);
+
+            }
+        });
+
     }
 }

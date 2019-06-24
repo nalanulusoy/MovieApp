@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 import com.nalan.movieapp.di.Injectable;
 import com.nalan.movieapp.ui.adapter.MovieAdapter;
 import com.nalan.movieapp.ui.viewmodel.HomeMovieViewModel;
@@ -38,6 +39,8 @@ public class HomeMovieFragment extends Fragment implements Injectable {
     RecyclerView rec_movie_list;
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+    @Inject
+    NavigationController navigationController;
 
     HomeMovieViewModelFactory factory;
     public HomeMovieFragment() {
@@ -45,7 +48,6 @@ public class HomeMovieFragment extends Fragment implements Injectable {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static HomeMovieFragment newInstance(String param1, String param2) {
         HomeMovieFragment fragment = new HomeMovieFragment();
         Bundle args = new Bundle();
@@ -74,7 +76,7 @@ public class HomeMovieFragment extends Fragment implements Injectable {
 
     public void setAdapter(){
         ActivityUtils.setRecyclerVerticalLayoutManager(rec_movie_list,getActivity());
-        movieAdapter=new MovieAdapter(getActivity());
+        movieAdapter=new MovieAdapter(getActivity(),navigationController);
         rec_movie_list.setAdapter(movieAdapter);
     }
     private HomeMovieViewModel createViewModel() {

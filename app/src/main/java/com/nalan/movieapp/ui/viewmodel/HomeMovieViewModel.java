@@ -46,10 +46,7 @@ public class HomeMovieViewModel extends ViewModel {
 
         }
 
-
     }
-
-
 
     public void getMovieFromServive(){
         UtilApi.getAPIService().getMovieById(637).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Movie>() {
@@ -119,7 +116,7 @@ public class HomeMovieViewModel extends ViewModel {
                     }
                 });
 
-        result.subscribe(new Observer<List<Object>>() {
+        result.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<Object>>() {
             @Override
             public void onSubscribe(Disposable d) {
 

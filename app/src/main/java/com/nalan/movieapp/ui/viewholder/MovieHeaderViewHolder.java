@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,19 @@ public class MovieHeaderViewHolder extends RecyclerView.ViewHolder{
         Glide.with(activity).load(url).asBitmap()
                 .fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+
+    }
+
+    public void setClickListener (String newsId, NavigationController navigationController){
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                navigationController.navigateToMovieDetailFragment(newsId);
+
+            }
+        });
 
     }
 }

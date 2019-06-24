@@ -70,6 +70,7 @@
             android:layout_height="120dp"
             android:layout_marginTop="10dp"
             android:scaleType="fitXY"
+            android:clickable="true"
             tools:src="@mipmap/ic_launcher" />
 
     </LinearLayout>

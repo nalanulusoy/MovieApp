@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 import com.nalan.movieapp.constants.AppConstants;
 import com.nalan.movieapp.model.Movie;
 import com.nalan.movieapp.model.MovieResult;
@@ -26,9 +27,10 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     List<Object> mItems;
     Activity activity;
 
-
-    public MovieAdapter(Activity activity) {
+   NavigationController  navigationController;
+    public MovieAdapter(Activity activity, NavigationController navigationController) {
         this.activity = activity;
+        this.navigationController=navigationController;
 
 
     }
@@ -72,11 +74,16 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             if (movieResult.posterUrl != null) {
                 viewHolder.setImageView(AppConstants.IMAGE_PATH_ORİGİNAL + movieResult.posterUrl, activity);
             }
+
+            if(Integer.valueOf(movieResult.id).toString()!=null){
+                viewHolder.setClickListener(Integer.valueOf(movieResult.id).toString(),navigationController);
+            }
+
         } else if (holder instanceof MovieHorizontalViewHolder) {
             MovieHorizontalViewHolder viewHolder = (MovieHorizontalViewHolder) holder;
             MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieHorizontalListAdapter movieHorizontalListAdapter = new MovieHorizontalListAdapter(movieResult.getResults(), activity);
+            MovieHorizontalListAdapter movieHorizontalListAdapter = new MovieHorizontalListAdapter(movieResult.getResults(), activity,navigationController);
             viewHolder.setAdapter(movieHorizontalListAdapter, activity);
 
         } else if (holder instanceof MovieGridViewHolder) {
@@ -84,8 +91,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             MovieGridViewHolder viewHolder = (MovieGridViewHolder) holder;
             MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity);
+            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity,navigationController);
             viewHolder.setAdapter(movieListAdapter, activity);
+
 
 
         } else if (holder instanceof MovieVerticalViewHolder) {
@@ -93,7 +101,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             MovieVerticalViewHolder viewHolder = (MovieVerticalViewHolder) holder;
             MovieResult movieResult = (MovieResult) item;
             viewHolder.setTitle(movieResult.getTypeName());
-            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity);
+            MovieListVerticalAdapter movieListAdapter = new MovieListVerticalAdapter(movieResult.getResults(), activity,navigationController);
             viewHolder.setAdapter(movieListAdapter, activity);
 
         }

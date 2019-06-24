@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nalan.movieapp.R;
+import com.nalan.movieapp.common.NavigationController;
 import com.nalan.movieapp.constants.AppConstants;
 import com.nalan.movieapp.model.Movie;
 import com.nalan.movieapp.ui.viewholder.MovieItemVerticalViewHolder;
@@ -16,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MovieListVerticalAdapter  extends RecyclerView.Adapter<MovieItemVerticalViewHolder>  {
     List<Movie> mItems;
     Activity activity;
+    NavigationController navigationController;
 
-    public MovieListVerticalAdapter(List<Movie> mItems, Activity activity) {
+    public MovieListVerticalAdapter(List<Movie> mItems, Activity activity, NavigationController navigationController) {
         this.mItems = mItems;
         this.activity=activity;
+        this.navigationController=navigationController;
     }
 
     @NonNull
@@ -41,6 +44,10 @@ public class MovieListVerticalAdapter  extends RecyclerView.Adapter<MovieItemVer
         if(movie.originalTitle!=null){
             holder.setTitle(movie.originalTitle);
         }
+        if(Integer.valueOf(movie.id).toString()!=null){
+            holder.setClickListener(Integer.valueOf(movie.id).toString(),navigationController);
+        }
+
 
     }
 
